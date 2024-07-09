@@ -29,8 +29,6 @@ int main() {
     int cnt = 0;
 
     for (ll i = 2; i < Max_size; i++) {
-        //if (i * i > B) break;
-
         if (arr[i]) { // 소수인 경우
             ll power = i * i;
             while (power <= B) {
