@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+
+	int n;
+
+	cin >> n;
+
+	vector<int> box(n);
+	for (int i = 0; i < n; i++) {
+		cin >> box[i];
+	}
+
+	vector<int> dp(n, 1);
+
+	for (int i = 1; i < n; i++) {
+		for (int j = 0; j < i; j++) {
+			if (box[j] < box[i]) {
+				dp[i] = max(dp[i], dp[j] + 1);
+			}
+		}
+	}
+
+	int max_boxes = *max_element(dp.begin(), dp.end());
+
+	cout << max_boxes;
+
+	return 0;
+}
